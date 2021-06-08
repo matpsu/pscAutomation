@@ -30,7 +30,7 @@ public class Pschll32Proxy implements AutoCloseable {
     }
 
     public Position setPosition(int row, int col) throws IllegalArgumentException {
-        if((row <= rows && row >= 1) || (col <= columns && col >= 1)) {
+        if((row > rows || row < 1) || (col > columns || col < 1)) {
             throw new IllegalArgumentException(String.format("Rows(actual:%d, max:%d) or Columns(actual:%d, max:%d) out of range", row, rows, col, columns));
         }
         return setPosition((row - 1) * columns + col);
